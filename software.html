@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOCI R&D · software research</title>
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="software.css">
+</head>
+<body>
+  <canvas id="neural-canvas"></canvas>
+
+  <div class="container">
+    <!-- top navigation (optional back to main) -->
+    <div class="nav-top">
+      <a href="#" class="back-link" onclick="history.back(); return false;"><i class="fas fa-arrow-left"></i> back to R&D main</a>
+      <span class="dept-badge"><i class="fas fa-code"></i> software division</span>
+    </div>
+
+    <!-- page title -->
+    <div class="title-section">
+      <h1>software research</h1>
+      <div class="sub">development · formal methods · next‑gen systems</div>
+    </div>
+
+    <!-- DEEP SOFTWARE RESEARCH DETAILS -->
+    <div class="research-detail">
+      <h2><i class="fas fa-cubes"></i> software development & research</h2>
+      <div class="grid-2col">
+        <div class="info-block">
+          <p><i class="fas fa-bullseye"></i> <strong>mission:</strong> build verified, secure, and high‑performance software foundations — from compilers to distributed systems.</p>
+          <p><i class="fas fa-microchip"></i> <strong>core areas:</strong> programming language theory, static analysis, real‑time operating systems, and trustworthy devops.</p>
+          <p><i class="fas fa-shield-alt"></i> <strong>security first:</strong> memory‑safe languages (Rust, Ada), formal verification (Coq, TLA+), and side‑channel resistance.</p>
+        </div>
+        <div class="info-block">
+          <p><i class="fas fa-flask"></i> <strong>labs:</strong> compiler lab, verification lab, systems prototyping.</p>
+          <p><i class="fas fa-users"></i> <strong>team:</strong> 12 researchers, 6 PhDs, ex‑Mozilla / MSR / academic partners.</p>
+          <p><i class="fas fa-trophy"></i> <strong>achievements:</strong> 3 patents (JIT hardening, zero‑copy serialization), 20+ papers (PLDI, Oakland).</p>
+        </div>
+      </div>
+
+      <!-- tech stack -->
+      <div style="margin: 2rem 0 1rem;">
+        <span class="tech-tag">Rust</span>
+        <span class="tech-tag">C++23</span>
+        <span class="tech-tag">Coq</span>
+        <span class="tech-tag">TLA+</span>
+        <span class="tech-tag">LLVM</span>
+        <span class="tech-tag">WebAssembly</span>
+        <span class="tech-tag">seL4</span>
+        <span class="tech-tag">Kubernetes</span>
+        <span class="tech-tag">eBPF</span>
+        <span class="tech-tag">formal verification</span>
+      </div>
+
+      <!-- featured projects / research directions -->
+      <div class="subtitle"><i class="fas fa-star" style="color:#0ff;"></i> active research streams</div>
+      <ul class="project-list">
+        <li><i class="fas fa-cog"></i> <strong>Project IronCore</strong> – a formally verified microkernel for embedded cyber‑physical systems (collab with seL4 foundation).</li>
+        <li><i class="fas fa-cog"></i> <strong>VeriFS</strong> – verified file system with crash‑safe guarantees, using F* and Rust.</li>
+        <li><i class="fas fa-cog"></i> <strong>Compiler hardening</strong> – automatic insertion of CFI and memory tagging in LLVM backend.</li>
+        <li><i class="fas fa-cog"></i> <strong>WebAssembly sandbox</strong> – fine‑grained capability control for cloud‑edge computing.</li>
+        <li><i class="fas fa-cog"></i> <strong>Quantum‑resistant signature schemes</strong> – high‑speed software implementation for TLS 1.3.</li>
+      </ul>
+
+      <p style="margin-top: 2rem;"><i class="fas fa-link" style="color:#0ff;"></i> part of FOCI R&D — aligned with cybersecurity & android research streams.</p>
+    </div>
+
+    <!-- JOIN FORM FOR NEW RESEARCHERS -->
+    <div class="form-section">
+      <h3><i class="fas fa-user-astronaut"></i> become a software researcher</h3>
+      <div class="join-text">
+        <i class="fas fa-quote-left" style="color:#0ff; opacity:0.7;"></i> 
+        We're looking for passionate minds: formal methods, systems, PL, or security. If you want to build software that lasts, fill the form below.
+      </div>
+
+      <form id="researcherForm" onsubmit="event.preventDefault(); alert('Thank you for your interest! (demo — form sent to research@focitech.site)'); this.reset();">
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="far fa-user"></i> full name *</label>
+            <input type="text" placeholder="e.g. Taylor Chen" required>
+          </div>
+          <div class="form-group">
+            <label><i class="far fa-envelope"></i> email *</label>
+            <input type="email" placeholder="taylor.chen@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="fas fa-graduation-cap"></i> academic / professional background</label>
+            <input type="text" placeholder="PhD CS / MSc / industry experience">
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-code"></i> primary expertise</label>
+            <select>
+              <option>formal verification / theorem proving</option>
+              <option>compilers / programming languages</option>
+              <option>systems / OS / embedded</option>
+              <option>security / applied crypto</option>
+              <option>distributed systems / cloud</option>
+              <option>other (specify in message)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-pencil-alt"></i> message / research interests (brief)</label>
+          <textarea placeholder="I'd like to contribute to IronCore kernel / I'm working on Rust verification …"></textarea>
+        </div>
+
+        <div class="form-group" style="margin: 1.5rem 0;">
+          <label style="display: flex; align-items: center; gap: 12px;">
+            <input type="checkbox" style="width: 20px; height:20px;"> 
+            <span>I agree to the data policy (demo: we protect your info)</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> submit application</button>
+        <p style="margin-top: 1rem; color: #8fbfe0;"><i class="fas fa-info-circle"></i> this is a demo — in production the form would connect to research@focitech.site</p>
+      </form>
+    </div>
+
+    <!-- additional software research stats / link to main -->
+    <div style="background: rgba(0,5,5,0.6); border-radius: 30px; padding: 2rem; margin: 2rem 0; border:1px solid #0ff3;">
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
+        <div><i class="fas fa-flask" style="color:#0ff; font-size:2rem;"></i> <strong>software R&D facts</strong></div>
+        <div>🔹 8 active grants (NSF, Horizon Europe)  🔹 12 on‑going theses  🔹 2 spin‑offs in stealth</div>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <p><i class="fas fa-sync-alt fa-spin"></i> software research division — FOCI R&D — part of <a href="#" style="color:#0ff;">www.focitech.site</a> | form for future colleagues</p>
+      <p style="margin-top:0.5rem;">#compilers #verification #systems #rust #formal</p>
+    </div>
+  </div>
+
+  <!-- neural network animation (same as main) -->
+  <script>
+    (function() {
+      const canvas = document.getElementById('neural-canvas');
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let particles = [];
+      const PARTICLE_COUNT = 80;
+      const MAX_DIST = 170;
+      const SPEED = 0.6;
+
+      function initParticles() {
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+          particles.push({
+            x: Math.random(),
+            y: Math.random(),
+            vx: (Math.random() - 0.5) * SPEED,
+            vy: (Math.random() - 0.5) * SPEED,
+            radius: Math.random() * 2.5 + 2,
+            glow: Math.random() * 0.6 + 0.4,
+          });
+        }
+      }
+
+      function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+      }
+
+      function updateParticles() {
+        for (let p of particles) {
+          p.x += p.vx / width;
+          p.y += p.vy / height;
+
+          if (p.x < 0) { p.x = 1; }
+          if (p.x > 1) { p.x = 0; }
+          if (p.y < 0) { p.y = 1; }
+          if (p.y > 1) { p.y = 0; }
+
+          p.vx += (Math.random() - 0.5) * 0.06;
+          p.vy += (Math.random() - 0.5) * 0.06;
+          let sp = Math.hypot(p.vx, p.vy);
+          if (sp > SPEED*1.5) {
+            p.vx *= 0.94;
+            p.vy *= 0.94;
+          }
+        }
+      }
+
+      function drawNeurons() {
+        ctx.clearRect(0, 0, width, height);
+        const screenParticles = particles.map(p => ({ x: p.x * width, y: p.y * height, radius: p.radius, glow: p.glow }));
+
+        // connections
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = '#0ff';
+        for (let i=0; i<screenParticles.length; i++) {
+          for (let j=i+1; j<screenParticles.length; j++) {
+            const a = screenParticles[i], b = screenParticles[j];
+            const dx = a.x - b.x, dy = a.y - b.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < MAX_DIST) {
+              const alpha = (1 - dist/MAX_DIST) * 0.5;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = `rgba(0, 255, 200, ${alpha*0.8})`;
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+          }
+        }
+
+        // nodes
+        for (let p of screenParticles) {
+          ctx.shadowBlur = 30;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, 2*Math.PI);
+          ctx.fillStyle = `rgba(180, 255, 240, 0.8)`;
+          ctx.fill();
+          ctx.shadowBlur = 40;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius*0.6, 0, 2*Math.PI);
+          ctx.fillStyle = '#ffffff';
+          ctx.fill();
+        }
+        ctx.shadowBlur = 0;
+      }
+
+      function animate() {
+        updateParticles();
+        drawNeurons();
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      initParticles();
+      resizeCanvas();
+      animate();
+
+      setInterval(() => {
+        for (let p of particles) {
+          p.vx += (Math.random() - 0.5) * 0.2;
+          p.vy += (Math.random() - 0.5) * 0.2;
+        }
+      }, 4000);
+    })();
+  </script>
+</body>
+</html>

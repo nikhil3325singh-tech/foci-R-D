@@ -1,0 +1,287 @@
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #030405;  /* deep black base */
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #eef3fc;
+      line-height: 1.5;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ---------- NEURAL NETWORK CANVAS (moving neurons) ---------- */
+    #neural-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 0;
+      pointer-events: none;  /* let UI elements be clickable */
+      background: #030405;    /* pure black fallback, canvas draws over */
+    }
+
+    /* content layer above canvas */
+    .container {
+      position: relative;
+      z-index: 10;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2rem 2rem 3rem;
+      backdrop-filter: blur(0);  /* no blur – canvas sharp behind */
+    }
+
+    /* ----- TITLE & GLOW ----- */
+    .title-section {
+      text-align: center;
+      margin-bottom: 3rem;
+      as ease-out infinite alternate;
+    }
+
+    .title-section h1 {
+      font-size: 3.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, hsl(185, 100%, 50%), #b0b0ff, #ffb0f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px rgba(0, 0, 00, 0.6);
+      margin-bottom: 0.25rem;
+    }
+
+    .title-section .sub {
+      font-size: 1.4rem;
+      color: #aad0ff;
+      border-bottom: 1px solid rgba(0, 255, 200, 0.3);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+      text-shadow: 0 0 8px rgb(0, 0, 0);
+    }
+
+    @keyframes fadePulse {
+      0% { filter: drop-shadow(0 0 2px hsl(180, 100%, 50%)); opacity: 0.95; }
+      100% { filter: drop-shadow(0 0 18px #0ff); opacity: 1; }
+    }
+
+    /* ----- MAIN COMPANY CARD (www.focitech.site) ----- */
+    .company-card {
+      background: rgba(0, 10, 18, 0.7);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(0, 255, 200, 0.25);
+      border-radius: 48px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 25px 50px -8px black, 0 0 0 1px hsla(185, 100%, 50%, 0.2) inset;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .company-card:hover {
+      border-color: hsl(185, 100%, 50%);
+      box-shadow: 0 0 40px hsla(199, 79%, 53%, 0.3);
+    }
+
+    .company-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .company-header i {
+      font-size: 2.8rem;
+      color: #4affde;
+      filter: drop-shadow(0 0 12px cyan);
+    }
+
+    .company-header h2 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #eee, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .company-header h2 span {
+      font-size: 1rem;
+      background: none;
+      -webkit-text-fill-color: #a0c8ff;
+      margin-left: 12px;
+    }
+
+    .company-desc {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width:700px) { .company-desc { grid-template-columns: 1fr; } }
+
+    .company-info p {
+      margin-bottom: 1rem;
+      font-size: 1.15rem;
+      color: #d0e2ff;
+    }
+
+    .company-info p i { width: 28px; color: rgb(37, 131, 185); }
+
+    .mission-tag {
+      background: rgba(34, 140, 182, 0.1);
+      padding: 0.8rem 1.5rem;
+      border-radius: 60px;
+      border-left: 4px solid rgb(52, 110, 187);
+      font-weight: 500;
+    }
+
+    /* ----- PILLARS (research domains) with moving neural inspiration ----- */
+    .pillars {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.3rem;
+      margin: 2rem 0 3rem;
+      justify-content: center;
+    }
+
+    .pillar {
+      background: rgba(0, 20, 20, 0.7);
+      backdrop-filter: blur(4px);
+      border: 1px solid hsla(224, 51%, 49%, 0.507);
+      border-radius: 60px;
+      padding: 0.8rem 2.2rem;
+      font-weight: 600;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0);
+      transition: 0.2s;
+      color: #dcf0ff;
+    }
+
+    .pillar i { color: hsl(185, 100%, 50%); font-size: 1.6rem; }
+
+    .pillar:hover {
+      border-color: hsl(219, 42%, 53%);
+      box-shadow: 0 0 35px hsl(221, 62%, 63%);
+      transform: translateY(-4px) scale(1.05);
+      background: hsla(180, 100%, 8%, 0.9);
+    }
+
+    /* ----- DEPARTMENT CARD ----- */
+    .dept-section {
+      background: rgba(0, 8, 15, 0.6);
+      backdrop-filter: blur(5px);
+      border-radius: 50px;
+      padding: 2.5rem;
+      border: 1px solid rgba(255,255,255,0.05);
+      margin-bottom: 3rem;
+    }
+
+    .dept-header {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .dept-header h3 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #cae9ff, #b0f0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .badge {
+      background: hsl(185, 100%, 50%);
+      border-radius: 40px;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid rgb(0, 0, 0);
+      color: rgb(0, 0, 0);
+    }
+
+    /* LEADERS grid */
+    .leaders-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-around;
+      margin-top: 2.5rem;
+    }
+
+    .leader-card {
+      background: rgba(5, 15, 20, 0.7);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(0, 255, 200, 0.2);
+      border-radius: 40px;
+      padding: 1.8rem 2rem;
+      width: 260px;
+      text-align: center;
+      transition: 0.2s;
+      box-shadow: 0 10px 20px -10px black;
+    }
+
+    .leader-card:hover {
+      border-color: #0ff;
+      transform: scale(1.02) translateY(-8px);
+      box-shadow: 0 0 30px rgba(0, 255, 200, 0.4);
+    }
+
+    .leader-card .avatar { font-size: 3.8rem; color: hsl(180, 100%, 50%); filter: drop-shadow(0 0 10px cyan); }
+    .leader-card h4 { font-size: 1.9rem; font-weight: 600; color: white; }
+    .leader-card .role { color: #0ff; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; }
+    .leader-card .desc { color: #b0d0f0; border-top: 1px dashed rgba(0,255,200,0.3); padding-top: 0.8rem; }
+
+    /* research summary cards */
+    .research-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 3rem 0 2rem;
+    }
+    .research-item {
+      flex: 1 1 200px;
+      background: rgba(0, 10, 10, 0.5);
+      backdrop-filter: blur(3px);
+      border-radius: 30px;
+      padding: 1.8rem 1rem;
+      text-align: center;
+      border: 1px solid rgba(0,255,200,0.1);
+      transition: 0.2s;
+    }
+    .research-item i { font-size: 2.5rem; color: hsl(180, 100%, 50%); }
+    .research-item h5 { font-size: 1.7rem; font-weight: 500; }
+    .research-item p { color: #c0d8fc; }
+
+    /* extra facts grid */
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+    .facts-grid div i { color: #0ff; margin-right: 8px; }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 1rem;
+      color: #7f9fbf;
+      border-top: 1px solid rgba(0,255,200,0.1);
+      padding-top: 2rem;
+    }
+    .footer-note a { color: #7ff0ff; text-decoration: none; border-bottom: 1px dotted; }
+    .footer-note a:hover { color: cyan; }
+
+    /* small adjustment for canvas interaction */
+    a, button, .pillar, .leader-card { pointer-events: auto; }
+  </style>

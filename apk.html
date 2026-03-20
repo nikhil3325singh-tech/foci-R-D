@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOCI · Android research & join</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="apk.css">
+</head>
+<body>
+    <link:apk class="css"></link:apk>
+
+  <canvas id="neural-canvas"></canvas>
+
+  <div class="container">
+    <!-- top navigation (back to main about, but can be any link) -->
+    <div class="top-nav">
+      <a href="#" class="back-link" onclick="alert('in real site: back to main about page'); return false;"><i class="fas fa-arrow-left"></i> back to FOCI R&amp;D</a>
+      <span class="dept-badge"><i class="fab fa-android"></i> android research lab</span>
+    </div>
+
+    <!-- main title -->
+    <div class="page-title">
+      <h1>Android App R&amp;D</h1>
+      <div class="sub">deep security · reverse engineering · app hardening</div>
+    </div>
+
+    <!-- android lab overview -->
+    <div class="android-lab-card">
+      <div class="lab-header">
+        <i class="fab fa-android"></i>
+        <h2>FOCI Android Research</h2>
+      </div>
+      <p style="font-size: 1.3rem; margin-bottom: 1.5rem;">Cutting‑edge mobile security, privacy, and systems research — from kernel to app layer.</p>
+
+      <!-- four focus areas as cards -->
+      <div class="research-grid">
+        <div class="research-cell">
+          <i class="fas fa-shield-alt"></i>
+          <h3>mobile sec</h3>
+          <p>runtime protection, exploit mitigation, vulnerability research on AOSP.</p>
+        </div>
+        <div class="research-cell">
+          <i class="fas fa-microchip"></i>
+          <h3>reverse eng.</h3>
+          <p>binary analysis, obfuscation/deobfuscation, frida & unidbg internals.</p>
+        </div>
+        <div class="research-cell">
+          <i class="fas fa-lock"></i>
+          <h3>app hardening</h3>
+          <p>RASP, tamper detection, white‑box crypto, api protection.</p>
+        </div>
+        <div class="research-cell">
+          <i class="fas fa-robot"></i>
+          <h3>android AI</h3>
+          <p>on‑device ML, secure enclave integration, adversarial robustness.</p>
+        </div>
+      </div>
+
+      <!-- detailed highlights with bullet list -->
+      <ul class="highlight-list">
+        <li><i class="fas fa-bolt"></i> <strong>collaborations:</strong> GrapheneOS, LineageOS, Samsung R&D (knox research)</li>
+        <li><i class="fas fa-code"></i> <strong>tools developed:</strong> FOCI‑droid (hardening framework), android fuzzer suite, dynamic analysis sandbox</li>
+        <li><i class="fas fa-flask"></i> <strong>current projects:</strong> post‑quantum android keystore, trusted execution environment audit, android 15 zero‑day research</li>
+      </ul>
+
+      <p style="margin-top: 2rem; color: #a0e0ff;"><i class="fas fa-microscope"></i>  The Android team consists of 9 researchers (6 remote, 3 in Zurich & Singapore labs). Regular papers at Black Hat, DEF CON, and major academic conferences.</p>
+    </div>
+
+    <!-- CALL TO ACTION: become a researcher (application form) -->
+    <div class="form-section" id="join-form">
+      <h2><i class="fas fa-user-plus"></i> join the android research team</h2>
+      <div class="form-intro">
+        <p>We are always looking for passionate security researchers, reverse engineers, and systems developers. If you want to push Android to its limits, fill out the form below. (simulated — in real deployment this would connect to a backend)</p>
+      </div>
+
+      <form class="join-form" id="researcherForm" onsubmit="event.preventDefault(); alert('Thank you for applying! (demo — your request would be sent to FOCI R&D)'); this.reset();">
+        <!-- row 1: full name + email -->
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="fas fa-user"></i> full name *</label>
+            <input type="text" placeholder="e.g. Alex Rivera" required>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-envelope"></i> email *</label>
+            <input type="email" placeholder="alex@example.com" required>
+          </div>
+        </div>
+
+        <!-- row 2: expertise level + current role -->
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="fas fa-graduation-cap"></i> expertise level</label>
+            <select>
+              <option>Student / Master</option>
+              <option>PhD / Postdoc</option>
+              <option>Industry researcher</option>
+              <option>Independent hacker</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-briefcase"></i> current affiliation (optional)</label>
+            <input type="text" placeholder="university / company">
+          </div>
+        </div>
+
+        <!-- research interests (checkboxes) -->
+        <div class="form-row-check">
+          <label style="display: block; margin-bottom: 1rem; font-weight: 500;"><i class="fas fa-microscope"></i> research areas (select all that apply)</label>
+          <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+            <div class="checkbox-group">
+              <input type="checkbox" id="c1" checked> <label for="c1">Android security</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="c2"> <label for="c2">Reverse engineering</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="c3"> <label for="c3">App hardening</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="c4"> <label for="c4">Mobile malware</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="c5"> <label for="c5">TrustZone / TEE</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="c6"> <label for="c6">Fuzzing</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- message / experience -->
+        <div class="form-group">
+          <label><i class="fas fa-pen"></i> tell us about your Android experience / ideas *</label>
+          <textarea placeholder="I've been reversing Android apps for 3 years... or: I have a proposal regarding kernel hardening..." required></textarea>
+        </div>
+
+        <!-- link to portfolio/github (optional) -->
+        <div class="form-group">
+          <label><i class="fab fa-github"></i> GitHub / blog / papers (optional)</label>
+          <input type="url" placeholder="https://github.com/yourhandle">
+        </div>
+
+        <!-- how did you hear? -->
+        <div class="form-group">
+          <label><i class="fas fa-rss"></i> how did you hear about FOCI android lab?</label>
+          <select>
+            <option>Twitter / X</option>
+            <option>LinkedIn</option>
+            <option>Conference (BlackHat/Defcon)</option>
+            <option>Friend / colleague</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <!-- data consent (simple checkbox) -->
+        <div class="checkbox-group" style="margin: 0.5rem 0 1rem;">
+          <input type="checkbox" id="consent" required> <label for="consent">I agree that FOCI R&D may store my information for recruitment purposes (simulated). *</label>
+        </div>
+
+        <!-- submit button -->
+        <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> submit application</button>
+        <p style="margin-top: 1.5rem; color: #7fb0cf;"><i class="fas fa-shield-alt"></i> all inquiries are handled confidentially. (demo form, no data sent)</p>
+      </form>
+    </div>
+
+    <!-- some stats / partners -->
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; align-items: center; margin: 2rem 0;">
+      <div class="collab-grid">
+        <div class="collab-item"><i class="fas fa-shield-hal"></i><br>grapheneOS</div>
+        <div class="collab-item"><i class="fas fa-microchip"></i><br>ARM</div>
+        <div class="collab-item"><i class="fas fa-lock"></i><br>now secure</div>
+        <div class="collab-item"><i class="fas fa-university"></i><br>ETH Zurich</div>
+      </div>
+    </div>
+
+    <!-- extra note linking main site -->
+    <div class="footnote">
+      <i class="fas fa-info-circle" style="margin-right: 12px;"></i> This Android research page is part of FOCI R&D (parent company <a href="#" style="color:#0ff; text-decoration: none;">www.focitech.site</a>). All research is conducted ethically and with responsible disclosure.
+    </div>
+
+    <div class="footer-note">
+      <p><i class="fas fa-sync-alt fa-spin"></i> FOCI android research · #reverse #hardening #mobile #joinus</p>
+    </div>
+  </div>
+
+  <!-- same neural network animation (moving neurons) -->
+  <script>
+    (function() {
+      const canvas = document.getElementById('neural-canvas');
+      const ctx = canvas.getContext('2d');
+
+      let width, height;
+      let particles = [];
+      const PARTICLE_COUNT = 80;
+      const MAX_DIST = 170;
+      const SPEED = 0.6;
+
+      function initParticles() {
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+          particles.push({
+            x: Math.random(),
+            y: Math.random(),
+            vx: (Math.random() - 0.5) * SPEED,
+            vy: (Math.random() - 0.5) * SPEED,
+            radius: Math.random() * 2 + 2,
+            glow: Math.random() * 0.7 + 0.3,
+          });
+        }
+      }
+
+      function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+      }
+
+      function updateParticles() {
+        for (let p of particles) {
+          p.x += p.vx / width;
+          p.y += p.vy / height;
+          if (p.x < 0) { p.x = 1; }
+          if (p.x > 1) { p.x = 0; }
+          if (p.y < 0) { p.y = 1; }
+          if (p.y > 1) { p.y = 0; }
+          p.vx += (Math.random() - 0.5) * 0.08;
+          p.vy += (Math.random() - 0.5) * 0.08;
+          let sp = Math.hypot(p.vx, p.vy);
+          if (sp > SPEED*1.5) {
+            p.vx *= 0.95;
+            p.vy *= 0.95;
+          }
+        }
+      }
+
+      function drawNeurons() {
+        ctx.clearRect(0, 0, width, height);
+        const screenParticles = particles.map(p => ({
+          x: p.x * width,
+          y: p.y * height,
+          radius: p.radius,
+          glow: p.glow
+        }));
+
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = '#0ff';
+        for (let i = 0; i < screenParticles.length; i++) {
+          for (let j = i + 1; j < screenParticles.length; j++) {
+            const a = screenParticles[i];
+            const b = screenParticles[j];
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < MAX_DIST) {
+              const alpha = (1 - dist / MAX_DIST) * 0.5;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = `rgba(0, 255, 200, ${alpha * 0.7})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+
+        for (let p of screenParticles) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius + 2, 0, 2 * Math.PI);
+          ctx.fillStyle = `rgba(0, 255, 200, 0.1)`;
+          ctx.fill();
+          ctx.shadowBlur = 30;
+          ctx.shadowColor = '#0ff';
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
+          ctx.fillStyle = `rgba(180, 255, 240, ${0.6 + p.glow*0.3})`;
+          ctx.fill();
+          ctx.shadowBlur = 40;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius * 0.6, 0, 2 * Math.PI);
+          ctx.fillStyle = '#afff fc';
+          ctx.fill();
+        }
+        ctx.shadowBlur = 0;
+      }
+
+      function animate() {
+        updateParticles();
+        drawNeurons();
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      initParticles();
+      resizeCanvas();
+      animate();
+    })();
+  </script>
+</body>
+</html>
