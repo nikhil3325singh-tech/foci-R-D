@@ -1,0 +1,445 @@
+   <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: #03050f;
+            color: #edf3ff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ===== SECURE ANIMATED BACKGROUND (with particles & encryption vibe) ===== */
+        #secure-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(ellipse at 30% 35%, #0f1b30, #02030b 90%);
+        }
+
+        /* moving grid – secure foundation */
+        .cyber-grid {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background-image: 
+                linear-gradient(rgba(0, 180, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 180, 255, 0.04) 1px, transparent 1px);
+            background-size: 55px 55px;
+            transform: rotate(15deg) scale(1.3);
+            animation: gridShift 40s infinite alternate ease-in-out;
+            opacity: 0.6;
+        }
+
+        @keyframes gridShift {
+            0% { transform: rotate(15deg) translateX(-3%) translateY(-3%) scale(1.3); }
+            100% { transform: rotate(15deg) translateX(3%) translateY(3%) scale(1.35); }
+        }
+
+        /* floating encryption particles (binary, hex, lock icons) */
+        .encrypt-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: rgba(80, 200, 255, 0.25);
+            pointer-events: none;
+        }
+
+        .encrypt-symbol {
+            position: absolute;
+            opacity: 0;
+            animation: floatSymbol 16s infinite linear;
+            text-shadow: 0 0 15px #00a6ff, 0 0 30px #0044ff;
+            white-space: nowrap;
+        }
+
+        @keyframes floatSymbol {
+            0% { transform: translateY(120vh) rotate(0deg) scale(0.9); opacity: 0; }
+            10% { opacity: 0.5; }
+            30% { opacity: 1; }
+            70% { opacity: 0.6; }
+            100% { transform: translateY(-20vh) rotate(20deg) scale(1.3); opacity: 0; }
+        }
+
+        /* many different symbols – secure & creative */
+        .encrypt-symbol:nth-child(1) { left: 7%; animation-duration: 18s; animation-delay: 0s; }
+        .encrypt-symbol:nth-child(2) { left: 18%; animation-duration: 23s; animation-delay: 2s; }
+        .encrypt-symbol:nth-child(3) { left: 30%; animation-duration: 20s; animation-delay: 4s; }
+        .encrypt-symbol:nth-child(4) { left: 42%; animation-duration: 26s; animation-delay: 1s; }
+        .encrypt-symbol:nth-child(5) { left: 55%; animation-duration: 22s; animation-delay: 5s; }
+        .encrypt-symbol:nth-child(6) { left: 68%; animation-duration: 19s; animation-delay: 3s; }
+        .encrypt-symbol:nth-child(7) { left: 80%; animation-duration: 24s; animation-delay: 6s; }
+        .encrypt-symbol:nth-child(8) { left: 92%; animation-duration: 27s; animation-delay: 2.5s; }
+        .encrypt-symbol:nth-child(9) { left: 13%; animation-duration: 29s; animation-delay: 7s; }
+        .encrypt-symbol:nth-child(10) { left: 48%; animation-duration: 21s; animation-delay: 8s; }
+        .encrypt-symbol:nth-child(11) { left: 73%; animation-duration: 25s; animation-delay: 4.5s; }
+        .encrypt-symbol:nth-child(12) { left: 87%; animation-duration: 30s; animation-delay: 9s; }
+
+        /* scanning line effect (like security clearance) */
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                transparent, 
+                rgba(0, 200, 255, 0.03) 12%, 
+                rgba(0, 160, 255, 0.1) 40%, 
+                rgba(0, 200, 255, 0.03) 70%, 
+                transparent);
+            animation: scanMove 8s infinite linear;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        @keyframes scanMove {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(200%); }
+        }
+
+        /* glowing fingerprint / key icon (large, subtle) */
+        .giant-lock {
+            position: absolute;
+            bottom: 3%;
+            right: 3%;
+            font-size: 12rem;
+            color: rgba(50, 150, 255, 0.08);
+            transform: rotate(5deg);
+            animation: giantFloat 24s infinite alternate ease-in-out;
+            z-index: -1;
+        }
+
+        @keyframes giantFloat {
+            0% { transform: rotate(3deg) scale(1) translateY(0); }
+            100% { transform: rotate(10deg) scale(1.1) translateY(-40px); }
+        }
+
+        /* main signup card – vault aesthetic */
+        .signup-vault {
+            width: 100%;
+            max-width: 560px;
+            background: rgba(6, 16, 36, 0.65);
+            backdrop-filter: blur(20px) saturate(200%);
+            -webkit-backdrop-filter: blur(20px) saturate(200%);
+            border: 1px solid rgba(0, 170, 255, 0.4);
+            border-radius: 70px;
+            padding: 2.8rem 2.5rem;
+            box-shadow: 0 60px 100px -30px #000000, 0 0 0 1px rgba(70, 170, 255, 0.4) inset, 0 0 90px #003faa;
+            animation: vaultAppear 1s cubic-bezier(0.2, 0.9, 0.3, 1);
+            border-top: 3px solid #3f8aff;
+            border-bottom: 3px solid #1f4cb0;
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes vaultAppear {
+            0% { opacity: 0; transform: scale(0.92) translateY(40px); filter: blur(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+        }
+
+        /* header with creative icon */
+        .signup-header {
+            text-align: center;
+            margin-bottom: 2.2rem;
+        }
+
+        .header-icon {
+            font-size: 3.5rem;
+            color: #c5ddff;
+            filter: drop-shadow(0 0 25px #2f7cf0) drop-shadow(0 0 50px #0044ff);
+            animation: iconPulse 3s infinite alternate;
+            background: rgba(0, 40, 80, 0.3);
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            border: 2px solid #3f82ef;
+        }
+
+        @keyframes iconPulse {
+            0% { filter: drop-shadow(0 0 15px #2f7cf0) drop-shadow(0 0 30px #0040cc); transform: scale(1); }
+            100% { filter: drop-shadow(0 0 35px #6aa9ff) drop-shadow(0 0 70px #0044ee); transform: scale(1.02); }
+        }
+
+        .signup-header h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            background: linear-gradient(145deg, #ffffff, #b5d2ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .signup-header p {
+            color: #b3ccff;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .signup-header p i {
+            color: #3f82ef;
+            margin: 0 4px;
+        }
+
+        /* signup form */
+        .secure-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2rem 0 1.5rem;
+        }
+
+        .form-row-duo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+        }
+
+        .form-row-duo .input-field {
+            flex: 1 1 200px;
+        }
+
+        .input-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .input-field label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #c5dbff;
+            margin-left: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .input-field label i {
+            color: #3f82ef;
+            width: 20px;
+            font-size: 1rem;
+        }
+
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            background: rgba(2, 15, 35, 0.8);
+            border: 1px solid #2e57a0;
+            border-radius: 50px;
+            padding: 0.2rem 1.5rem;
+            transition: all 0.3s;
+            border-left: 5px solid #1e4fae;
+            backdrop-filter: blur(5px);
+        }
+
+        .input-wrapper i {
+            color: #6f9bff;
+            font-size: 1.1rem;
+            margin-right: 0.8rem;
+            width: 22px;
+        }
+
+        .input-wrapper input, .input-wrapper select {
+            background: transparent;
+            border: none;
+            padding: 1rem 0;
+            color: white;
+            font-size: 1rem;
+            width: 100%;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .input-wrapper input::placeholder {
+            color: #8ba5d9;
+            opacity: 0.7;
+        }
+
+        .input-wrapper select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237aa9ff' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 0.2rem center;
+            background-size: 1.2rem;
+            color: #eef3ff;
+        }
+
+        .input-wrapper:focus-within {
+            border-color: #7aacff;
+            box-shadow: 0 0 0 4px #1e4fae60, 0 0 30px #0055ff;
+            background: rgba(5, 22, 48, 0.95);
+            border-left-width: 7px;
+        }
+
+        /* password hint */
+        .password-hint {
+            font-size: 0.8rem;
+            color: #9bb4e0;
+            margin-left: 1rem;
+            margin-top: 0.2rem;
+        }
+
+        /* research track selection (creative) */
+        .track-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 0.5rem 0 0.2rem;
+        }
+
+        .track-option {
+            background: rgba(20, 50, 100, 0.4);
+            border: 1px solid #3f82ef;
+            border-radius: 50px;
+            padding: 0.4rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            flex: 1 0 auto;
+            max-width: fit-content;
+        }
+
+        .track-option input {
+            accent-color: #3b82f6;
+            width: 18px;
+            height: 18px;
+        }
+
+        .track-option label {
+            color: #c5dbff;
+            font-size: 0.95rem;
+        }
+
+        .track-option:hover {
+            background: #1e3f70;
+            border-color: #8ab3ff;
+        }
+
+        /* terms & conditions */
+        .terms-row {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin: 0.5rem 0;
+            color: #c5dbff;
+            font-size: 0.9rem;
+        }
+
+        .terms-row input {
+            accent-color: #3f82ef;
+            width: 18px;
+            height: 18px;
+        }
+
+        .terms-row a {
+            color: #ffd966;
+            text-decoration: none;
+            border-bottom: 1px dashed;
+        }
+
+        /* signup button */
+        .signup-action {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0 1.2rem;
+        }
+
+        .btn-create {
+            background: linear-gradient(145deg, #0f2b55, #0a1f42);
+            border: 1px solid #3f82ef;
+            color: white;
+            font-size: 1.6rem;
+            font-weight: 600;
+            padding: 1.1rem 3rem;
+            border-radius: 70px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            box-shadow: 0 15px 30px #000, 0 0 35px #0044ff;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(8px);
+            border-left: 5px solid #6ea0ff;
+            border-right: 5px solid #1e4fae;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-create i {
+            font-size: 2rem;
+            color: #b5d2ff;
+        }
+
+        .btn-create:hover {
+            transform: scale(1.04) translateY(-4px);
+            box-shadow: 0 25px 45px -5px #000d1f, 0 0 60px #2f7cf0;
+            background: linear-gradient(145deg, #153766, #0e2450);
+            border-color: #8ab6ff;
+        }
+
+        .btn-create:active {
+            transform: scale(0.98);
+        }
+
+        /* login link */
+        .existing-account {
+            text-align: center;
+            color: #9cb2df;
+            margin-top: 1.2rem;
+        }
+
+        .existing-account a {
+            color: #ffd966;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid;
+        }
+
+        .existing-account a:hover {
+            color: white;
+        }
+
+        /* department badge */
+        .dept-badge {
+            background: rgba(0, 40, 80, 0.4);
+            border-radius: 60px;
+            padding: 0.6rem 1.2rem;
+            margin-top: 1.8rem;
+            text-align: center;
+            font-size: 0.9rem;
+            border: 1px solid #3f82ef60;
+            color: #b8d2ff;
+        }
+
+        .dept-badge i {
+            color: gold;
+        }
+
+        /* responsive */
+        @media (max-width: 480px) {
+            .signup-vault { padding: 2rem 1.5rem; }
+            .btn-create { font-size: 1.4rem; padding: 0.9rem 2rem; }
+            .header-icon { width: 80px; height: 80px; line-height: 80px; font-size: 2.8rem; }
+        }
+    </style>

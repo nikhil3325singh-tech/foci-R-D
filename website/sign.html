@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foci R&D · secure sign up</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="sign.css">
+</head>
+<body>
+    <!-- secure & creative background -->
+    <div id="secure-bg">
+        <div class="cyber-grid"></div>
+        <div class="scan-line"></div>
+        <div class="encrypt-particles">
+            <span class="encrypt-symbol">🔐</span>
+            <span class="encrypt-symbol">⚡</span>
+            <span class="encrypt-symbol">#0x7F3</span>
+            <span class="encrypt-symbol">🔑</span>
+            <span class="encrypt-symbol">1010</span>
+            <span class="encrypt-symbol">🛡️</span>
+            <span class="encrypt-symbol">0x9A2</span>
+            <span class="encrypt-symbol">##</span>
+            <span class="encrypt-symbol">⌨️</span>
+            <span class="encrypt-symbol">#A1F0</span>
+            <span class="encrypt-symbol">💻</span>
+            <span class="encrypt-symbol">0xC0DE</span>
+            <span class="encrypt-symbol">🔒</span>
+        </div>
+        <div class="giant-lock"><i class="fas fa-fingerprint"></i></div>
+    </div>
+
+    <!-- main signup card -->
+    <div class="signup-vault">
+        <div class="signup-header">
+            <div class="header-icon">
+                <i class="fas fa-user-shield"></i>
+            </div>
+            <h2>join the lab</h2>
+            <p><i class="fas fa-shield-halved"></i> FOCI RESEARCH & DEVELOPMENT · secure registry <i class="fas fa-shield-halved"></i></p>
+        </div>
+
+        <!-- signup form (realistic fields) -->
+        <form class="secure-form" onsubmit="event.preventDefault(); alert('⚡ researcher profile created (demo). check your email for verification.');">
+            <div class="form-row-duo">
+                <div class="input-field">
+                    <label><i class="fas fa-user"></i> first name</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-id-card"></i>
+                        <input type="text" placeholder="Alex" required>
+                    </div>
+                </div>
+                <div class="input-field">
+                    <label><i class="fas fa-user"></i> last name</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-id-card"></i>
+                        <input type="text" placeholder="Rivera" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-field">
+                <label><i class="fas fa-envelope"></i> researcher email</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-at"></i>
+                    <input type="email" placeholder="alex.rivera@foci.research" required>
+                </div>
+            </div>
+
+            <div class="form-row-duo">
+                <div class="input-field">
+                    <label><i class="fas fa-lock"></i> passkey</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-key"></i>
+                        <input type="password" placeholder="········" required>
+                    </div>
+                    <div class="password-hint"><i class="fas fa-circle-info"></i> min. 12 chars, 1 number, 1 symbol</div>
+                </div>
+                <div class="input-field">
+                    <label><i class="fas fa-lock"></i> confirm</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-check-circle"></i>
+                        <input type="password" placeholder="········" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-field">
+                <label><i class="fas fa-microchip"></i> primary research domain</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-flask"></i>
+                    <select required>
+                        <option value="" disabled selected>— select your track —</option>
+                        <option>cyber security / hacking</option>
+                        <option>software development</option>
+                        <option>android app development</option>
+                        <option>finance researcher</option>
+                        <option>cross‑disciplinary</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- creative research interests (multiple choice) -->
+            <div class="input-field">
+                <label><i class="fas fa-tags"></i> research interests (synapse areas)</label>
+                <div class="track-selector">
+                    <div class="track-option"><input type="checkbox" id="interest1"> <label for="interest1">threat intel</label></div>
+                    <div class="track-option"><input type="checkbox" id="interest2"> <label for="interest2">secure coding</label></div>
+                    <div class="track-option"><input type="checkbox" id="interest3"> <label for="interest3">android internals</label></div>
+                    <div class="track-option"><input type="checkbox" id="interest4"> <label for="interest4">quant finance</label></div>
+                    <div class="track-option"><input type="checkbox" id="interest5"> <label for="interest5">exploit dev</label></div>
+                    <div class="track-option"><input type="checkbox" id="interest6"> <label for="interest6">blockchain</label></div>
+                </div>
+            </div>
+
+            <!-- terms and conditions -->
+            <div class="terms-row">
+                <input type="checkbox" id="terms" checked required> 
+                <label for="terms">I accept the <a href="#">research lab terms</a> and <a href="#">data security protocols</a>.</label>
+            </div>
+
+            <div class="signup-action">
+                <button type="submit" class="btn-create">
+                    <i class="fas fa-dna"></i> create secure profile <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </form>
+
+        <!-- login redirect -->
+        <div class="existing-account">
+            <i class="fas fa-shield"></i> already have clearance? <a href="#">sign in to R&D</a>
+        </div>
+
+        <!-- department note -->
+        <div class="dept-badge">
+            <i class="fas fa-bolt"></i> cyber · software · android · finance · <i class="fas fa-bolt"></i>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOCI · get started | new researcher</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Inter + Orbitron for cool vibe -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href='start.css'.css">
+</head>
+<body>
+  <canvas id="neuro-canvas"></canvas>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <div class="container">
+    <!-- header with dynamic badge -->
+    <div class="header">
+      <div class="logo-area">
+        <i class="fas fa-atom logo-icon"></i>
+        <span class="logo-text">FOCI R&D</span>
+      </div>
+      <div class="department-badge">
+        <i class="fas fa-flask"></i> researcher intake · 2025
+      </div>
+    </div>
+
+    <!-- first impression: big animated heading -->
+    <div class="hero-greeting">
+      <h1>IGNITE YOUR GENIUS</h1>
+      <p>Join the frontier of deep-tech research <span class="pulse-dot"></span></p>
+    </div>
+
+    <!-- main form section (get started for new researchers) -->
+    <div class="form-wrapper" id="get-started">
+      <div class="form-title">
+        <i class="fas fa-user-astronaut"></i> 
+        <span>new researcher application</span>
+      </div>
+      <p style="color: #bbafff; margin-bottom: 2rem;">Choose your domain — cybersecurity, software, android, finance — and become part of FOCI.</p>
+
+      <form id="researcherForm" onsubmit="event.preventDefault(); alert('🚀 Application sent! We’ll reach out within 48h. Welcome to FOCI R&D.');">
+        <!-- two-column personal info -->
+        <div class="form-grid">
+          <div class="input-group">
+            <label><i class="fas fa-user"></i> full name *</label>
+            <input type="text" placeholder="e.g. Jordan Lee" required>
+          </div>
+          <div class="input-group">
+            <label><i class="fas fa-envelope"></i> email *</label>
+            <input type="email" placeholder="jordan@example.com" required>
+          </div>
+          <div class="input-group">
+            <label><i class="fas fa-globe"></i> portfolio / GitHub</label>
+            <input type="url" placeholder="https://github.com/...">
+          </div>
+          <div class="input-group">
+            <label><i class="fas fa-chart-bar"></i> years of experience</label>
+            <select>
+              <option>0-1 (student/enthusiast)</option>
+              <option>1-3 years</option>
+              <option>3-6 years</option>
+              <option>6-10 years</option>
+              <option>10+ years</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- department selection (cool radio cards) -->
+        <label style="font-weight: 600; color:#d6c6ff; margin-bottom: 1rem; display: block;"><i class="fas fa-cogs"></i> primary research interest *</label>
+        <div class="department-options" id="deptGroup">
+          <label class="dept-pill" id="pillCyber">
+            <input type="radio" name="department" value="cybersecurity" checked> 
+            <i class="fas fa-shield-alt"></i> cybersecurity
+          </label>
+          <label class="dept-pill" id="pillSoft">
+            <input type="radio" name="department" value="software"> 
+            <i class="fas fa-code"></i> software dev
+          </label>
+          <label class="dept-pill" id="pillAndroid">
+            <input type="radio" name="department" value="android"> 
+            <i class="fab fa-android"></i> android app
+          </label>
+          <label class="dept-pill" id="pillFinance">
+            <input type="radio" name="department" value="finance"> 
+            <i class="fas fa-chart-line"></i> finance research
+          </label>
+        </div>
+
+        <!-- extra message area -->
+        <div class="input-group">
+          <label><i class="fas fa-pen-fancy"></i> tell us about yourself / research interests</label>
+          <textarea placeholder="I've contributed to open-source security tools... or any cool project..."></textarea>
+        </div>
+
+        <!-- cool checkbox -->
+        <div class="terms-check">
+          <input type="checkbox" id="agree" checked>
+          <label for="agree" style="color: #d0bcff;">I'm excited to contribute and agree with FOCI's researcher guidelines.</label>
+        </div>
+
+        <!-- submit button with animation -->
+        <button type="submit" class="btn-submit">
+          <i class="fas fa-rocket"></i> launch application
+        </button>
+        <p style="margin-top: 1.5rem; color: #9a89b5;"><i class="fas fa-shield-hal"></i> we reply within 48h · all data confidential</p>
+      </form>
+    </div>
+
+    <!-- inspirational quote (cool animation) -->
+    <div class="researcher-quote">
+      <i class="fas fa-quote-right"></i>
+      <span class="quote-text">"The best way to predict the future is to invent it — with FOCI, you'll build what's next."</span>
+      <span style="color:#b886ff; font-weight:600;">— FOCI research board</span>
+    </div>
+
+    <!-- footer -->
+    <div class="footer-note">
+      <p><i class="fas fa-crown" style="color: gold;"></i> FOCI RESEARCH & DEVELOPMENT · cyber · software · android · finance</p>
+      <p style="margin-top: 0.6rem;">#joinFOCI #neurons #deeptech #getstarted</p>
+    </div>
+  </div>
+
+  <!-- ADVANCED NEURAL NETWORK ANIMATION (with depth) -->
+  <script>
+    (function() {
+      const canvas = document.getElementById('neuro-canvas');
+      const ctx = canvas.getContext('2d');
+
+      let width, height;
+      let particles = [];
+      const PARTICLE_COUNT = 140;
+      const MAX_DIST = 180;
+      const SPEED = 0.4;
+
+      function initParticles() {
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+          particles.push({
+            x: Math.random(),
+            y: Math.random(),
+            z: Math.random() * 0.8 + 0.2,  // depth factor
+            vx: (Math.random() - 0.5) * SPEED,
+            vy: (Math.random() - 0.5) * SPEED,
+            radius: Math.random() * 3 + 2.5,
+            glow: Math.random() * 0.8 + 0.4,
+          });
+        }
+      }
+
+      function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+      }
+
+      function updateParticles() {
+        for (let p of particles) {
+          p.x += p.vx / width;
+          p.y += p.vy / height;
+
+          // wrap around
+          if (p.x < 0) p.x = 1;
+          if (p.x > 1) p.x = 0;
+          if (p.y < 0) p.y = 1;
+          if (p.y > 1) p.y = 0;
+
+          // random drift
+          p.vx += (Math.random() - 0.5) * 0.05;
+          p.vy += (Math.random() - 0.5) * 0.05;
+          let sp = Math.hypot(p.vx, p.vy);
+          if (sp > SPEED * 1.8) {
+            p.vx *= 0.96;
+            p.vy *= 0.96;
+          }
+        }
+      }
+
+      function drawNeurons() {
+        ctx.clearRect(0, 0, width, height);
+        const screenParticles = particles.map(p => ({
+          x: p.x * width,
+          y: p.y * height,
+          radius: p.radius * (0.8 + 0.3 * p.z),
+          z: p.z,
+          glow: p.glow
+        }));
+
+        // draw connections (edges) with depth-aware opacity
+        ctx.shadowBlur = 30;
+        ctx.shadowColor = '#b886ff';
+        for (let i = 0; i < screenParticles.length; i++) {
+          for (let j = i + 1; j < screenParticles.length; j++) {
+            const a = screenParticles[i];
+            const b = screenParticles[j];
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < MAX_DIST) {
+              const alpha = (1 - dist / MAX_DIST) * 0.3 * ((a.z + b.z) / 2);
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = `rgba(180, 130, 255, ${alpha})`;
+              ctx.lineWidth = 0.6 + alpha * 2;
+              ctx.stroke();
+            }
+          }
+        }
+
+        // draw neuron nodes with purple/blue glow
+        for (let p of screenParticles) {
+          ctx.shadowBlur = 40;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
+          ctx.fillStyle = `rgba(160, 120, 255, 0.9)`;
+          ctx.fill();
+
+          ctx.shadowBlur = 60;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius * 0.5, 0, 2 * Math.PI);
+          ctx.fillStyle = `rgba(230, 200, 255, 1)`;
+          ctx.fill();
+
+          // tiny white core
+          ctx.shadowBlur = 80;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius * 0.2, 0, 2 * Math.PI);
+          ctx.fillStyle = 'white';
+          ctx.fill();
+        }
+        ctx.shadowBlur = 0;
+      }
+
+      function animate() {
+        updateParticles();
+        drawNeurons();
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      initParticles();
+      resizeCanvas();
+      animate();
+
+      // extra occasional push
+      setInterval(() => {
+        for (let p of particles) {
+          p.vx += (Math.random() - 0.5) * 0.3;
+          p.vy += (Math.random() - 0.5) * 0.3;
+        }
+      }, 4000);
+    })();
+  </script>
+  <script>
+    // optional: highlight selected department pill (just for visual feedback)
+    const pills = document.querySelectorAll('.dept-pill');
+    pills.forEach(pill => {
+      pill.addEventListener('click', function() {
+        pills.forEach(p => p.classList.remove('selected'));
+        this.classList.add('selected');
+      });
+    });
+    // set default selected (first)
+    document.getElementById('pillCyber').classList.add('selected');
+  </script>
+</body>
+</html>

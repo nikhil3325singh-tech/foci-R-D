@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOCI R&amp;D · cyber research & join</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="cyber.css">
+</head>
+<body>
+  <canvas id="neural-canvas"></canvas>
+
+  <div class="container">
+    <!-- navigation -->
+    <div class="top-nav">
+      <a href="#" class="back-link" onclick="history.back(); return false;"><i class="fas fa-arrow-left"></i> back to R&D main</a>
+      <span class="cyber-badge"><i class="fas fa-shield-hal"></i> cyber research unit</span>
+    </div>
+
+    <!-- main title -->
+    <div class="page-title">
+      <h1>cybersecurity R&amp;D</h1>
+      <div class="sub">threat hunting · post‑quantum · zero‑trust · resilience</div>
+    </div>
+
+    <!-- two columns: research areas + stats / lead -->
+    <div class="cyber-showcase">
+      <!-- left: detailed research info -->
+      <div class="cyber-card">
+        <h2><i class="fas fa-shield-alt"></i> active research lines</h2>
+        <ul class="research-list">
+          <li>
+            <strong>🛡️ post‑quantum cryptography</strong>
+            <p>implementation of CRYSTALS‑Kyber, Falcon, and hybrid key exchange for low‑power embedded systems. collaboration with pqc standardization.</p>
+            <div class="tag-group"><span class="tag">NIST round 4</span><span class="tag"> lattice‑based</span><span class="tag"> FPGA</span></div>
+          </li>
+          <li>
+            <strong>⚡ zero‑day & exploit development</strong>
+            <p>proactive discovery of memory corruption, kernel exploits, and browser vectors. full‑chain exploits for responsible disclosure.</p>
+            <div class="tag-group"><span class="tag">windows kernel</span><span class="tag">ios/macos</span><span class="tag">wasm</span></div>
+          </li>
+          <li>
+            <strong>🔐 zero‑trust architecture</strong>
+            <p>microsegmentation, continuous verification, and AI‑driven policy engines for cloud‑native environments. beyond corp implementations.</p>
+            <div class="tag-group"><span class="tag">SPIFFE</span><span class="tag">OPA</span><span class="tag">eBPF</span></div>
+          </li>
+          <li>
+            <strong>📡 threat intel & ML detection</strong>
+            <p>graph neural networks for APT campaign correlation. real‑time stream analysis and adversarial robustness.</p>
+            <div class="tag-group"><span class="tag">MITRE ATT&CK</span><span class="tag">GNN</span><span class="tag">Kafka</span></div>
+          </li>
+          <li>
+            <strong>📱 mobile & IoT security</strong>
+            <p>android trusted execution environment (TEE) hardening, secure boot verification, and iot firmware fuzzing.</p>
+            <div class="tag-group"><span class="tag">TrustZone</span><span class="tag">AVF</span><span class="tag">Zephyr</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- right: quick facts + cyber lead -->
+      <div>
+        <div class="cyber-card" style="margin-bottom: 2rem;">
+          <h2><i class="fas fa-microscope"></i> cyber lab facts</h2>
+          <div class="stats-grid">
+            <div class="stat-item"><span class="number">14</span> <br> active researchers</div>
+            <div class="stat-item"><span class="number">9</span> <br> ongoing projects</div>
+            <div class="stat-item"><span class="number">23</span> <br> CVEs disclosed (2024)</div>
+            <div class="stat-item"><span class="number">6</span> <br> patent filings</div>
+          </div>
+          <p style="margin-top: 1.5rem;"><i class="fas fa-flask" style="color:#0ff;"></i>  dedicated hardware lab: chipwhisperer, JTAG debuggers, FPGA clusters, and 0-day test range.</p>
+        </div>
+
+        <!-- cyber lead (chief) -->
+        <div class="cyber-card">
+          <h2><i class="fas fa-user-secret"></i> cyber lead</h2>
+          <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+            <i class="fas fa-user-ninja" style="font-size: 5rem; color: #0ff; filter: drop-shadow(0 0 12px cyan);"></i>
+            <div>
+              <h3 style="font-size: 2.2rem;">Ryo Tanaka</h3>
+              <p style="color: #0ff;">chief of R&D · head of cyber</p>
+              <p>ex‑Project Zero, 15+ years vulnerability research. leads the android & kernel security team.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- join form for new researcher -->
+    <div class="form-section" id="join-cyber">
+      <h2><i class="fas fa-user-plus"></i> become a cyber researcher</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 700px;">if you're passionate about breaking & building — join FOCI R&amp;D cybersecurity. we're looking for curious minds.</p>
+
+      <form id="researcherForm" onsubmit="event.preventDefault(); alert('Thank you for applying! We’ll review your submission and reach out soon.')">
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="far fa-user"></i> full name *</label>
+            <input type="text" placeholder="e.g. Alex Chen" required>
+          </div>
+          <div class="form-group">
+            <label><i class="far fa-envelope"></i> email *</label>
+            <input type="email" placeholder="alex@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="fas fa-microchip"></i> primary interest</label>
+            <select>
+              <option>post‑quantum crypto</option>
+              <option>exploit development / reverse</option>
+              <option>zero‑trust & cloud security</option>
+              <option>threat intelligence / ML</option>
+              <option>mobile / IoT security</option>
+              <option>formal verification</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-globe"></i> years of experience</label>
+            <select>
+              <option>0-1 (student/enthusiast)</option>
+              <option>1-3 years</option>
+              <option>3-6 years</option>
+              <option>6-10 years</option>
+              <option>10+ years</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-pen-fancy"></i> brief intro / research interests (max 300 words)</label>
+          <textarea placeholder="Tell us about your projects, CVE's, github, or any cool vulnerability you found ..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fab fa-github"></i> portfolio / GitHub / blog</label>
+          <input type="url" placeholder="https://github.com/yourhandle">
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="confirm" checked>
+          <label for="confirm" style="margin:0;">I'm excited to contribute to FOCI R&amp;D and comfortable with a remote-first culture.</label>
+        </div>
+
+        <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> submit application</button>
+        <p style="margin-top: 1.5rem; color: #aac8ff;"><i class="fas fa-shield"></i> we reply within 5‑7 days. all information is kept confidential.</p>
+      </form>
+    </div>
+
+    <!-- additional cyber resources / footer -->
+    <div class="leader-highlight">
+      <i class="fas fa-quote-right avatar"></i>
+      <div>
+        <p style="font-size: 1.3rem;">"Our research is 30% theory, 70% hands‑on exploitation. We share everything back to the community."</p>
+        <p style="color:#0ff;">— cyber unit manifesto</p>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <p><i class="fas fa-shield-alt"></i> FOCI cybersecurity R&D · part of FOCITECH · <a href="#" style="color:#0ff;">focitech.site/cyber</a> (internal)</p>
+      <p style="margin-top: 1rem;">#cybersecurity #research #joinUs #postquantum #exploitdev</p>
+    </div>
+  </div>
+
+  <!-- neural network animation script (same as before) -->
+  <script>
+    (function() {
+      const canvas = document.getElementById('neural-canvas');
+      const ctx = canvas.getContext('2d');
+
+      let width, height;
+      let particles = [];
+      const PARTICLE_COUNT = 80;
+      const MAX_DIST = 170;
+      const SPEED = 0.5;
+
+      function initParticles() {
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+          particles.push({
+            x: Math.random(),
+            y: Math.random(),
+            vx: (Math.random() - 0.5) * SPEED,
+            vy: (Math.random() - 0.5) * SPEED,
+            radius: Math.random() * 2.5 + 2,
+            glow: Math.random() * 0.8 + 0.3,
+          });
+        }
+      }
+
+      function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+      }
+
+      function updateParticles() {
+        for (let p of particles) {
+          p.x += p.vx / width;
+          p.y += p.vy / height;
+
+          if (p.x < 0) p.x = 1;
+          if (p.x > 1) p.x = 0;
+          if (p.y < 0) p.y = 1;
+          if (p.y > 1) p.y = 0;
+
+          p.vx += (Math.random() - 0.5) * 0.06;
+          p.vy += (Math.random() - 0.5) * 0.06;
+          let sp = Math.hypot(p.vx, p.vy);
+          if (sp > SPEED*1.5) {
+            p.vx *= 0.95;
+            p.vy *= 0.95;
+          }
+        }
+      }
+
+      function drawNeurons() {
+        ctx.clearRect(0, 0, width, height);
+        const screenParticles = particles.map(p => ({
+          x: p.x * width,
+          y: p.y * height,
+          radius: p.radius,
+          glow: p.glow
+        }));
+
+        // connections
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = '#0ff';
+        for (let i = 0; i < screenParticles.length; i++) {
+          for (let j = i + 1; j < screenParticles.length; j++) {
+            const a = screenParticles[i];
+            const b = screenParticles[j];
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < MAX_DIST) {
+              const alpha = (1 - dist / MAX_DIST) * 0.4;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = `rgba(0, 255, 200, ${alpha})`;
+              ctx.lineWidth = 0.7;
+              ctx.stroke();
+            }
+          }
+        }
+
+        // nodes
+        for (let p of screenParticles) {
+          ctx.shadowBlur = 30;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
+          ctx.fillStyle = `rgba(120, 255, 220, 0.9)`;
+          ctx.fill();
+          ctx.shadowBlur = 40;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius * 0.5, 0, 2 * Math.PI);
+          ctx.fillStyle = '#ffffff';
+          ctx.fill();
+        }
+        ctx.shadowBlur = 0;
+      }
+
+      function animate() {
+        updateParticles();
+        drawNeurons();
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      initParticles();
+      resizeCanvas();
+      animate();
+
+      setInterval(() => {
+        for (let p of particles) {
+          p.vx += (Math.random() - 0.5) * 0.2;
+          p.vy += (Math.random() - 0.5) * 0.2;
+        }
+      }, 3000);
+    })();
+  </script>
+</body>
+</html>

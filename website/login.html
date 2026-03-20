@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foci R&D · secure login</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <!-- secure background layers -->
+    <div id="secure-bg">
+        <!-- moving grid (encryption grid) -->
+        <div class="grid-overlay"></div>
+        <!-- scanning line (security sweep) -->
+        <div class="scan-line"></div>
+        <!-- floating binary/hex symbols (encryption particles) -->
+        <div class="encrypt-particles">
+            <span class="encrypt-particle" style="left: 8%; top: 0%; animation-duration: 18s; animation-delay: 0s;">0x7F</span>
+            <span class="encrypt-particle" style="left: 20%; top: 0%; animation-duration: 22s; animation-delay: 3s;">#A1B2</span>
+            <span class="encrypt-particle" style="left: 45%; top: 0%; animation-duration: 26s; animation-delay: 1s;">0x3F2</span>
+            <span class="encrypt-particle" style="left: 70%; top: 0%; animation-duration: 20s; animation-delay: 6s;">#C0DE</span>
+            <span class="encrypt-particle" style="left: 85%; top: 0%; animation-duration: 24s; animation-delay: 2s;">0x9A4</span>
+            <span class="encrypt-particle" style="left: 15%; top: 0%; animation-duration: 30s; animation-delay: 9s;">1010</span>
+            <span class="encrypt-particle" style="left: 60%; top: 0%; animation-duration: 28s; animation-delay: 4s;">#FACE</span>
+            <span class="encrypt-particle" style="left: 92%; top: 0%; animation-duration: 17s; animation-delay: 7s;">0x00F</span>
+            <span class="encrypt-particle" style="left: 33%; top: 0%; animation-duration: 23s; animation-delay: 5s;">1101</span>
+        </div>
+        <!-- huge floating lock (subtle) -->
+        <div class="floating-lock"><i class="fas fa-lock"></i></div>
+    </div>
+
+    <!-- main login card -->
+    <div class="login-vault">
+        <div class="login-seal">
+            <div class="lock-icon">
+                <i class="fas fa-shield-halved"></i> <i class="fas fa-key"></i>
+            </div>
+            <h2>secure access</h2>
+            <p><i class="fas fa-fingerprint"></i> FOCI RESEARCH & DEVELOPMENT · VAULT <i class="fas fa-fingerprint"></i></p>
+        </div>
+
+        <!-- login form -->
+        <form class="secure-form" onsubmit="event.preventDefault(); alert('⚡ security protocol: access granted (demo). redirecting to R&D dashboard...');">
+            <div class="input-field">
+                <label><i class="fas fa-user-secret"></i> researcher ID / email</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-id-card"></i>
+                    <input type="text" placeholder="e.g., nikhil.singh@foci.research" required>
+                </div>
+            </div>
+
+            <div class="input-field">
+                <label><i class="fas fa-lock"></i> passkey</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-key"></i>
+                    <input type="password" placeholder="············" required>
+                </div>
+            </div>
+
+            <div class="login-extras">
+                <label class="remember">
+                    <input type="checkbox" checked> <span>remember this device (secure)</span>
+                </label>
+                <a href="#" class="forgot-link">reset clearance?</a>
+            </div>
+
+            <div class="verify-action">
+                <button type="submit" class="btn-unlock">
+                    <i class="fas fa-unlock-alt"></i> enter R&D <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </form>
+
+        <!-- new researcher? (join) -->
+        <div class="research-note">
+            <i class="fas fa-dna"></i> new researcher? <a href="#" style="color:#b3d0ff; text-decoration:underline;">get started →</a> · cyber · software · android · finance
+        </div>
+
+        <div class="access-footer">
+            <i class="fas fa-shield"></i> dual authentication · encrypted session <i class="fas fa-shield"></i>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOCI R&D · navy & purple prestige</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Font: Inter + Space Grotesk -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR (navy, purple, white - sharp) -->
+<div class="container px-0" style="max-width: 1400px;">
+  <nav class="navbar navbar-expand-lg navbar-container">
+    <div class="container-fluid px-0 px-lg-2">
+      <a class="navbar-brand" href="#">
+        <img>
+         <img src="C:\Users\nikhi\Downloads\n" alt="Foci R&D ">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <i class="fas fa-bars"></i> <span>menu</span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-home me-1"></i>Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-circle-info me-1"></i>About us</a></li>
+          <li class="nav-item"><a class="nav-link" href="founder.html"><i class="fas fa-users me-1"></i>Founders</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fas fa-rocket me-1"></i>Our services</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="software.html"><i class="fas fa-cogs"></i> Service 1 – software Research</a></li>
+              <li><a class="dropdown-item" href="apk.html"><i class="fas fa-cloud"></i> Service 2 – Android Research</a></li>
+              <li><a class="dropdown-item" href="cyber.html"><i class="fas fa-shield-alt"></i> Service 3 – Cyber Sercurity Research</a></li>
+              <li><a class="dropdown-item" href="finance.html"><i class="fas fa-shield-alt"></i> Service 4 – Finance Research </a></li>
+              <li><hr class="dropdown-divider"></li>
+              
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href=""><i class="fas fa-envelope me-1"></i>Contact us</a></li>
+        </ul>
+
+        <div class="d-flex ms-auto align-items-center gap-2 mt-3 mt-lg-0">
+          <a href="login.html" class="nav-link login-link"><i class="fas fa-arrow-right-to-bracket"></i> Login</a>
+          <a href="sign.html" class="nav-link signup-link"><i class="fas fa-user-plus"></i> Sign up</a>
+          <a href="start.html" class="get-started-btn"><i class="fas fa-bolt"></i> Get started</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<section class="hero-wrapper">
+  <div class="container-custom">
+    
+
+    <section class="hero">
+
+<canvas id="network"></canvas>
+
+<div class="hero-content">
+
+<h1>FOCI Research & Development</h1>
+
+<p>
+Advancing innovation through cutting-edge research in Cyber Security,
+Finance Technology, Software Engineering, and Android Application Development.
+</p>
+
+<div class="buttons">
+
+<a href="about.html" class="btn btn-learn">Learn More</a>
+
+<a href="start.html" class="btn btn-join">Join FOCI Research</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<script>
+
+/* Neural Network Animation */
+
+const canvas = document.getElementById("network");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let nodes = [];
+
+for(let i=0;i<80;i++){
+nodes.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-0.5)*1,
+vy:(Math.random()-0.5)*1
+});
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+nodes.forEach(node=>{
+
+node.x+=node.vx;
+node.y+=node.vy;
+
+if(node.x<0 || node.x>canvas.width) node.vx*=-1;
+if(node.y<0 || node.y>canvas.height) node.vy*=-1;
+
+/* draw node */
+
+ctx.beginPath();
+ctx.arc(node.x,node.y,2,0,Math.PI*2);
+ctx.fillStyle="#38bdf8";
+ctx.fill();
+
+});
+
+/* draw connections */
+
+for(let i=0;i<nodes.length;i++){
+
+for(let j=i+1;j<nodes.length;j++){
+
+let dx=nodes[i].x-nodes[j].x;
+let dy=nodes[i].y-nodes[j].y;
+let dist=Math.sqrt(dx*dx+dy*dy);
+
+if(dist<120){
+
+ctx.beginPath();
+ctx.moveTo(nodes[i].x,nodes[i].y);
+ctx.lineTo(nodes[j].x,nodes[j].y);
+
+ctx.strokeStyle="rgba(56,189,248,0.15)";
+ctx.stroke();
+
+}
+
+}
+
+}
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+</script>
+
+    <!-- carousel 6 slides (small buttons) -->
+    <div id="fociHeroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#fociHeroCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-slide-to="1"></button><button type="button" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-slide-to="3"></button><button type="button" data-bs-slide-to="4"></button>
+        <button type="button" data-bs-slide-to="5"></button>
+      </div>
+      <div class="carousel-inner rounded-5">
+        <!-- slide 1 finance -->
+        <div class="carousel-item active">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="finance">
+          <div class="carousel-caption">
+            <h3>FINANCE RESEARCH</h3>
+            <p>Algorithmic trading · risk modeling · blockchain analytics.</p>
+            <a href="#" class="btn btn-primary"><i class="fa-regular fa-chart-line"></i> Explore</a>
+          </div>
+          <div class="research-tag"><i class="fa-solid fa-chart-simple"></i> FOCI · finance</div>
+        </div>
+        <!-- slide 2 cyber -->
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" alt="cyber">
+          <div class="carousel-caption">
+            <h3>CYBER SECURITY</h3>
+            <p>Zero‑day resilience · AI threat detection · post‑quantum crypto.</p>
+            <a href="#" class="btn btn-primary"><i class="fa-solid fa-shield-halved"></i> Discover</a>
+          </div>
+          <div class="research-tag"><i class="fa-solid fa-shield"></i> FOCI · cyber</div>
+        </div>
+        <!-- slide 3 software -->
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop" alt="software">
+          <div class="carousel-caption">
+            <h3>SOFTWARE DEV</h3>
+            <p>Generative AI for code · formal verification · cloud‑native.</p>
+            <a href="#" class="btn btn-primary"><i class="fa-regular fa-window-code"></i> View</a>
+          </div>
+          <div class="research-tag"><i class="fa-solid fa-laptop-code"></i> FOCI · software</div>
+        </div>
+        <!-- slide 4 quant -->
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=2070&auto=format&fit=crop" alt="quant">
+          <div class="carousel-caption">
+            <h3>QUANT FINANCE AI</h3>
+            <p>Deep hedging · market simulation · regulatory tech.</p>
+            <a href="#" class="btn btn-primary"><i class="fa-regular fa-cube"></i> Quant</a>
+          </div>
+          <div class="research-tag"><i class="fa-solid fa-chart-pie"></i> FOCI · quant</div>
+        </div>
+        <!-- slide 5 privacy -->
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop" alt="privacy">
+          <div class="carousel-caption">
+            <h3>PRIVACY & IDENTITY</h3>
+            <p>Decentralized ID · zero‑knowledge proofs · homomorphic encryption.</p>
+            <a href="#" class="btn btn-primary"><i class="fa-solid fa-fingerprint"></i> Privacy</a>
+          </div>
+          <div class="research-tag"><i class="fa-solid fa-user-secret"></i> FOCI · privacy</div>
+        </div>
+        <!-- slide 6 ai engineering -->
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop" alt="ai engineering">
+          <div class="carousel-caption">
+            <h3>AI‑powered DEV</h3>
+            <p>LLM code generation · intelligent testing · devops automation.</p>
+            <a href="#" class="btn btn-primary"><i class="fa-regular fa-brain"></i> AI dev</a>
+          </div>
+          <div class="research-tag"><i class="fa-solid fa-robot"></i> FOCI · AI</div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#fociHeroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#fociHeroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+
+    
+      </span>
+    </div>
+  </div>
+</section>
+<section class="banner">
+
+<h1>Our Research Services</h1>
+<p>Innovating the future with advanced research and development</p>
+
+<div class="services">
+
+<div class="card">
+<h3>💻 Software Development Research</h3>
+<p>Exploring new technologies, architectures, and solutions for modern software systems.</p>
+</div>
+
+<div class="card">
+<h3>🔐 Cyber Security Research</h3>
+<p>Researching vulnerabilities, security models, and protection techniques.</p>
+</div>
+
+<div class="card">
+<h3>📊 Finance Research</h3>
+<p>Analyzing financial systems, algorithms, and digital economy trends.</p>
+</div>
+
+<div class="card">
+<h3>📱 Android Application Research</h3>
+<p>Building innovative mobile experiences and researching Android technologies.</p>
+</div>
+
+
+</div>
+<section class="banner">
+
+<div class="stats-container">
+
+<div class="stat">
+<div class="icon">🔎</div>
+<h2 class="counter" data-target="12500">0</h2>
+<p>Searches Completed</p>
+</div>
+
+<div class="stat">
+<div class="icon">👥</div>
+<h2 class="counter" data-target="8500">0</h2>
+<p>Users Registered</p>
+</div>
+
+<div class="stat">
+<div class="icon">📄</div>
+<h2 class="counter" data-target="3200">0</h2>
+<p>Research Papers</p>
+</div>
+
+</div>
+
+</section>
+<script>
+
+const counters = document.querySelectorAll('.counter');
+
+counters.forEach(counter => {
+    const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+
+        const speed = 200;
+        const increment = target / speed;
+
+        if(count < target){
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(updateCount,10);
+        }else{
+            counter.innerText = target;
+        }
+    };
+
+    updateCount();
+});
+
+</script>
+<div class="banner">
+    <div class="stats">
+
+        <div class="stat">
+            <div class="number" data-target="98">0</div>
+            <div class="label">Client Satisfaction %</div>
+        </div>
+
+        <div class="stat">
+            <div class="number" data-target="120">0</div>
+            <div class="label">Growth %</div>
+        </div>
+
+        <div class="stat">
+            <div class="number" data-target="95">0</div>
+            <div class="label">Efficiency %</div>
+        </div>
+
+        <div class="stat">
+            <div class="number" data-target="24">0</div>
+            <div class="label">Support Available (Hours)</div>
+        </div>
+
+    </div>
+</div>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<section class="research-section">
+
+<h2 class="title">Our Research Papers</h2>
+
+<div class="research-container">
+
+<div class="card" data-aos="fade-up">
+<h3>Stock Market Prediction</h3>
+<p>AI based research on predicting stock trends using machine learning and data analysis.</p>
+</div>
+
+<div class="card" data-aos="fade-up" data-aos-delay="100">
+<h3>Finance Risk Analysis</h3>
+<p>Research on financial risk management models for investment and trading systems.</p>
+</div>
+
+<div class="card" data-aos="fade-up" data-aos-delay="200">
+<h3>Cyber Attack Detection</h3>
+<p>Advanced cybersecurity research to detect and prevent modern cyber attacks.</p>
+</div>
+
+<div class="card" data-aos="fade-up" data-aos-delay="300">
+<h3>Network Security Framework</h3>
+<p>Research paper on building intelligent intrusion detection systems.</p>
+</div>
+
+<div class="card" data-aos="fade-up">
+<h3>Software Development Model</h3>
+<p>Research on improving agile development lifecycle and automation pipelines.</p>
+</div>
+
+<div class="card" data-aos="fade-up" data-aos-delay="100">
+<h3>AI in Software Engineering</h3>
+<p>Study on integrating AI tools in modern software development processes.</p>
+</div>
+
+<div class="card" data-aos="fade-up" data-aos-delay="200">
+<h3>Android App Security</h3>
+<p>Research on protecting Android applications from malware and vulnerabilities.</p>
+</div>
+
+<div class="card" data-aos="fade-up" data-aos-delay="300">
+<h3>Android Performance Optimization</h3>
+<p>Study on improving performance and memory efficiency of Android apps.</p>
+</div>
+
+</div>
+
+</section>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({
+duration:1000,
+once:true
+});
+</script>
+
+<section class="leader-banner">
+
+<h1>Our Founder & Visionary Leaders</h1>
+<p>The minds driving innovation in research, cybersecurity, finance, and technology.</p>
+
+<div class="leader-grid">
+
+<div class="leader-card">
+<img src="founder.jpg" class="leader-img">
+<div class="leader-name">Nikhil Sharma</div>
+<div class="leader-role">Founder & Chief Research Officer</div>
+</div>
+
+<div class="leader-card">
+<img src="ceo.jpg" class="leader-img">
+<div class="leader-name">Amit Verma</div>
+<div class="leader-role">Chief Executive Officer</div>
+</div>
+
+<div class="leader-card">
+<img src="cto.jpg" class="leader-img">
+<div class="leader-name">Rohit Singh</div>
+<div class="leader-role">Chief Technology Officer</div>
+</div>
+
+<div class="leader-card">
+<img src="gm.jpg" class="leader-img">
+<div class="leader-name">Priya Mehta</div>
+<div class="leader-role">General Manager</div>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TESTIMONIALS SLIDER (3 visible cards, navy/purple/white) -->
+<section class="testimonials-section">
+  <h2>What Our Clients Say</h2>
+  <div class="testimonial-carousel">
+    <div class="carousel-inner-testimonial" id="testimonialCarouselInner">
+      <!-- slide 1 (cards 1-3) -->
+      <div class="carousel-item-testimonial active" data-slide="0">
+        <div class="testimonial-row">
+          <div class="testimonial-card">
+            <p>"Foci Research and Development strengthened our cybersecurity infrastructure and protected our financial systems."</p>
+            <h4>Rahul Sharma</h4>
+            <span>CTO, SecureBank</span>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="testimonial-card">
+            <p>"Their software development team delivered a highly scalable fintech solution."</p>
+            <h4>Anita Mehta</h4>
+            <span>Founder, FinEdge</span>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="testimonial-card">
+            <p>"Outstanding cybersecurity expertise. Our company now feels safer than ever."</p>
+            <h4>David Clark</h4>
+            <span>Security Director, TechCore</span>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <!-- slide 2 (cards 4-6) -->
+      <div class="carousel-item-testimonial" data-slide="1">
+        <div class="testimonial-row">
+          <div class="testimonial-card">
+            <p>"Professional team with deep knowledge in finance and secure software systems."</p>
+            <h4>Michael Chen</h4>
+            <span>CEO, FinVision</span>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="testimonial-card">
+            <p>"They developed a powerful and secure trading platform for our company."</p>
+            <h4>Sarah Williams</h4>
+            <span>Product Manager, TradeFlow</span>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="testimonial-card">
+            <p>"Foci R&D helped us detect vulnerabilities before attackers could exploit them."</p>
+            <h4>James Carter</h4>
+            <span>CISO, DataSecure</span>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <!-- slide 3 (cards 7-9) -->
+      <div class="carousel-item-testimonial" data-slide="2">
+        <div class="testimonial-row">
+          <div class="testimonial-card">
+            <p>"The financial analytics software they built improved our decision-making."</p>
+            <h4>Priya Verma</h4>
+            <span>Finance Director, InvestPro</span>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="testimonial-card">
+            <p>"Their innovation in cybersecurity solutions is truly impressive."</p>
+            <h4>Daniel Smith</h4>
+            <span>IT Head, CyberNet</span>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="testimonial-card">
+            <p>"Reliable, secure, and highly professional software development services."</p>
+            <h4>Robert Brown</h4>
+            <span>CEO, DigitalAxis</span>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <!-- slide 4 (cards 10-12) -->
+      <div class="carousel-item-testimonial" data-slide="3">
+        <div class="testimonial-row">
+          <div class="testimonial-card">
+            <p>"Our fintech platform became faster and safer thanks to Foci R&D."</p>
+            <h4>Emma Wilson</h4>
+            <span>Co-Founder, PayFuture</span>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="testimonial-card">
+            <p>"Their cybersecurity audits revealed issues we never knew existed."</p>
+            <h4>Arjun Kapoor</h4>
+            <span>Security Analyst, SecureTech</span>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="testimonial-card">
+            <p>"A highly talented team delivering cutting-edge software solutions."</p>
+            <h4>Olivia Taylor</h4>
+            <span>Operations Manager, NextSoft</span>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <!-- slide 5 (cards 13-15) -->
+      <div class="carousel-item-testimonial" data-slide="4">
+        <div class="testimonial-row">
+          <div class="testimonial-card">
+            <p>"Foci Research and Development helped us modernize our financial software."</p>
+            <h4>Thomas Lee</h4>
+            <span>CTO, FinanceBridge</span>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="testimonial-card">
+            <p>"Their penetration testing services are among the best in the industry."</p>
+            <h4>Sophia Martinez</h4>
+            <span>Security Manager, ShieldCorp</span>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="testimonial-card">
+            <p>"An exceptional partner for secure and scalable software development."</p>
+            <h4>Vikram Singh</h4>
+            <span>Founder, CodeTrust</span>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    
+
+    <!-- controls -->
+    <div class="testimonial-control prev" id="testimonialPrev"><i class="fas fa-chevron-left"></i></div>
+    <div class="testimonial-control next" id="testimonialNext"><i class="fas fa-chevron-right"></i></div>
+  </div>
+</section>
+
+<!-- Bootstrap JS and custom testimonial slider script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  (function() {
+    console.log("✨ FOCI R&D — navy, dark blue, purple & white combination");
+
+    // Simple testimonial carousel
+    const items = document.querySelectorAll('.carousel-item-testimonial');
+    const prevBtn = document.getElementById('testimonialPrev');
+    const nextBtn = document.getElementById('testimonialNext');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      if (index < 0) index = items.length - 1;
+      if (index >= items.length) index = 0;
+      items.forEach((item, i) => {
+        item.classList.toggle('active', i === index);
+      });
+      currentSlide = index;
+    }
+
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+      nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+    }
+  })();
+</script>
+<section class="hero">
+
+<div class="particles">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<div class="hero-content">
+
+<h1>Foci Technology Research & Development</h1>
+
+<p>
+Start your innovation journey with Foci. Work on advanced research in 
+Cyber Security, Finance Technology, Software Development and Android Applications.
+</p>
+
+<a href="start.html" class="research-btn">
+Start Research With Foci
+</a>
+
+</div>
+
+</section>
+<footer class="footer">
+
+<div class="footer-container">
+
+<!-- About Section -->
+<div class="footer-about">
+<h2>Foci Technology Research & Development</h2>
+<p>
+Join our research programs in Cyber Security, Finance Technology,
+Software Development and Android Application Research.
+Work with innovators and contribute to the future of technology.
+</p>
+</div>
+
+<!-- Contact Info -->
+<div class="footer-contact">
+<h3>Contact Details</h3>
+
+<p>Email: fociresearch@gmail.com</p>
+<p>Phone: +91 9876543210</p>
+<p>Location: India</p>
+
+</div>
+
+<!-- Contact Form -->
+<div class="footer-form">
+
+<h3>Join Research Program</h3>
+
+<form>
+
+<input type="text" placeholder="Your Name" required>
+
+<input type="email" placeholder="Your Email" required>
+
+<select required>
+<option value="">Select Research Field</option>
+<option>Cyber Security Research</option>
+<option>Finance Research</option>
+<option>Software Development Research</option>
+<option>Android Application Research</option>
+</select>
+
+<textarea placeholder="Tell us about your interest"></textarea>
+
+<button type="submit">Apply for Research</button>
+
+</form>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 Foci Technology Research & Development | All Rights Reserved</p>
+</div>
+
+</footer>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOCI · founders & visionaries</title>
+  <!-- Font Awesome 6 (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="founder.css">
+</head>
+<body>
+  <!-- neural canvas background (moving neurons) -->
+  <canvas id="neural-canvas"></canvas>
+
+  <div class="container">
+    <!-- top bar -->
+    <div class="nav-bar">
+      <a href="#" class="back-link" onclick="history.back(); return false;"><i class="fas fa-arrow-left"></i> back</a>
+      <span class="founder-badge"><i class="fas fa-crown"></i> THE FOUNDERS</span>
+    </div>
+
+    <!-- title -->
+    <div class="title-section">
+      <h1>vision & origin</h1>
+      <div class="sub">the minds behind FOCI</div>
+    </div>
+
+    <!-- FOUNDER GRID (three founders) -->
+    <div class="founders-grid">
+      <!-- Founder 1: Dr. Aris Thorne -->
+      <div class="founder-card">
+        <div class="avatar"><i class="fas fa-user-tie"></i></div>
+        <h2>Dr. Aris Thorne</h2>
+        <div class="founder-title">founder & CEO</div>
+        <div class="founder-bio">Former NASA cryptographer, pioneer in post‑quantum security. Founded FOCITECH in 2018 to build resilient digital infrastructure. 20+ years in cyber‑physical systems.</div>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <!-- Founder 2: Maya Vallois (co-founder) -->
+      <div class="founder-card">
+        <div class="avatar"><i class="fas fa-user-astronaut"></i></div>
+        <h2>Maya Vallois</h2>
+        <div class="founder-title">co‑founder / CFO</div>
+        <div class="founder-bio">Financial engineer, previously D.E. Shaw & blockchain core dev. Leads fintech research, algorithmic risk, and FOCI’s strategic growth.</div>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <!-- Founder 3: Ryo Tanaka (chief of R&D) – also part of core team -->
+      <div class="founder-card">
+        <div class="avatar"><i class="fas fa-user-ninja"></i></div>
+        <h2>Ryo Tanaka</h2>
+        <div class="founder-title">chief of R&D</div>
+        <div class="founder-bio">Software security & android internals. Ex‑Project Zero, built FOCI’s zero‑trust pipeline. Leads cyber and hardware security research.</div>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- philosophy block (animated) -->
+    <div class="philosophy">
+      <i class="fas fa-quote-right"></i>
+      <p>"We don't just follow the future — we build it, then break it, then rebuild it stronger."</p>
+      <span class="author">— Aris, Maya & Ryo</span>
+    </div>
+
+    <!-- company origin timeline / mini milestones (gives more depth) -->
+    <div class="timeline">
+      <div class="milestone"><span class="year">2018</span> <br> FOCITECH founded</div>
+      <div class="milestone"><span class="year">2020</span> <br> first cyber lab</div>
+      <div class="milestone"><span class="year">2022</span> <br> fintech research launched</div>
+      <div class="milestone"><span class="year">2024</span> <br> android sec & quantum</div>
+      <div class="milestone"><span class="year">2025</span> <br> global R&D hubs</div>
+    </div>
+
+    <!-- short description of the founders' collective vision -->
+    <div style="background: rgba(0,8,8,0.5); border-radius: 50px; padding: 2rem; margin-top: 2.5rem; border: 1px solid rgba(0,255,200,0.15);">
+      <h3 style="font-size: 1.8rem; display: flex; gap: 15px;"><i class="fas fa-dna" style="color:#0ff;"></i> collective mission</h3>
+      <p style="font-size: 1.2rem; color: #bfdef0;">The three founders combine cryptography, financial engineering, and deep systems security. Together they steer FOCI R&D toward a future where trust is mathematically verifiable, software is self‑healing, and innovation never sleeps.</p>
+    </div>
+
+    <!-- footer link -->
+    <div class="footer-note">
+      <p><i class="fas fa-crown" style="color: gold;"></i> FOCI · 2018 – 2025 ·  <a href="#">www.focitech.site/founders</a></p>
+      <p style="margin-top: 0.5rem;">#founders #vision #postquantum #cybersecurity #fintech</p>
+    </div>
+  </div>
+
+  <!-- neural network animation script (moving neurons) -->
+  <script>
+    (function() {
+      const canvas = document.getElementById('neural-canvas');
+      const ctx = canvas.getContext('2d');
+
+      let width, height;
+      let particles = [];
+      const PARTICLE_COUNT = 85;        // neuron nodes
+      const MAX_DIST = 180;             // connection distance
+      const SPEED = 0.5;                // gentle drift
+
+      function initParticles() {
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+          particles.push({
+            x: Math.random(),
+            y: Math.random(),
+            vx: (Math.random() - 0.5) * SPEED,
+            vy: (Math.random() - 0.5) * SPEED,
+            radius: Math.random() * 2.5 + 2,   // 2..4.5px
+            glow: Math.random() * 0.8 + 0.3,
+          });
+        }
+      }
+
+      function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+      }
+
+      function updateParticles() {
+        for (let p of particles) {
+          p.x += p.vx / width;
+          p.y += p.vy / height;
+
+          // wrap around edges (seamless neuron field)
+          if (p.x < 0) p.x = 1;
+          if (p.x > 1) p.x = 0;
+          if (p.y < 0) p.y = 1;
+          if (p.y > 1) p.y = 0;
+
+          // random walk to keep organic
+          p.vx += (Math.random() - 0.5) * 0.06;
+          p.vy += (Math.random() - 0.5) * 0.06;
+          let sp = Math.hypot(p.vx, p.vy);
+          if (sp > SPEED * 1.5) {
+            p.vx *= 0.95;
+            p.vy *= 0.95;
+          }
+        }
+      }
+
+      function drawNeurons() {
+        ctx.clearRect(0, 0, width, height);
+
+        const screenParticles = particles.map(p => ({
+          x: p.x * width,
+          y: p.y * height,
+          radius: p.radius,
+          glow: p.glow
+        }));
+
+        // draw connections (edges) with gradient based on distance
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = '#0ff';
+        for (let i = 0; i < screenParticles.length; i++) {
+          for (let j = i + 1; j < screenParticles.length; j++) {
+            const a = screenParticles[i];
+            const b = screenParticles[j];
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < MAX_DIST) {
+              const alpha = (1 - dist / MAX_DIST) * 0.4;  // max 0.4
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = `rgba(0, 255, 200, ${alpha})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+
+        // draw neuron nodes (glowing)
+        for (let p of screenParticles) {
+          // outer aura
+          ctx.shadowBlur = 35;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius + 1.5, 0, 2 * Math.PI);
+          ctx.fillStyle = `rgba(0, 255, 200, 0.2)`;
+          ctx.fill();
+
+          // main core
+          ctx.shadowBlur = 40;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
+          ctx.fillStyle = `rgba(100, 255, 220, 0.9)`;
+          ctx.fill();
+
+          // bright inner dot
+          ctx.shadowBlur = 45;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius * 0.5, 0, 2 * Math.PI);
+          ctx.fillStyle = '#ffffff';
+          ctx.fill();
+        }
+
+        ctx.shadowBlur = 0;  // reset
+      }
+
+      function animate() {
+        updateParticles();
+        drawNeurons();
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      initParticles();
+      resizeCanvas();
+      animate();
+
+      // occasional extra push to keep movement alive
+      setInterval(() => {
+        for (let p of particles) {
+          p.vx += (Math.random() - 0.5) * 0.2;
+          p.vy += (Math.random() - 0.5) * 0.2;
+        }
+      }, 4000);
+    })();
+  </script>
+</body>
+</html>

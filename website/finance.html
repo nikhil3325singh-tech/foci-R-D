@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOCI · finance research | quantitative & blockchain</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Inter + Orbitron for tech/finance feel -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="finance.css">
+</head>
+<body>
+  <!-- animated finance background (currencies + chart bars) -->
+  <div class="finance-bg">
+    <div class="currency-symbol">$</div>
+    <div class="currency-symbol">€</div>
+    <div class="currency-symbol">£</div>
+    <div class="currency-symbol">¥</div>
+    <div class="currency-symbol">₿</div>
+    <div class="currency-symbol">₹</div>
+    <div class="currency-symbol">₣</div>
+    <div class="currency-symbol">₩</div>
+    <!-- chart bars -->
+    <div class="chart-bar"></div><div class="chart-bar"></div><div class="chart-bar"></div>
+    <div class="chart-bar"></div><div class="chart-bar"></div><div class="chart-bar"></div>
+  </div>
+  <div class="overlay-dark"></div>
+
+  <div class="container">
+    <!-- BACK BUTTON (easy navigation) -->
+    <div class="back-nav">
+      <a href="#" onclick="history.back(); return false;" class="back-btn"><i class="fas fa-arrow-left"></i> back to R&D departments</a>
+    </div>
+
+    <!-- header -->
+    <div class="finance-header">
+      <div class="logo-area">
+        <i class="fas fa-chart-line logo-icon"></i>
+        <span class="logo-text">FOCI · finance lab</span>
+      </div>
+      <div class="dept-badge">
+        <i class="fas fa-coins"></i> quantitative · blockchain · AI
+      </div>
+    </div>
+
+    <!-- hero -->
+    <div class="hero-finance">
+      <h1>FINANCIAL R&D</h1>
+      <div class="hero-sub">where algorithms meet markets · DeFi · risk · ML</div>
+    </div>
+
+    <!-- detailed research information -->
+    <div class="research-grid">
+      <div class="info-card">
+        <i class="fas fa-robot"></i>
+        <h3>algorithmic trading</h3>
+        <p>High‑frequency strategies, market microstructure, reinforcement learning for optimal execution, and low‑latency systems.</p>
+      </div>
+      <div class="info-card">
+        <i class="fas fa-link"></i>
+        <h3>blockchain & DeFi</h3>
+        <p>Smart contract security, MEV analysis, on‑chain forensics, layer‑2 protocols, and decentralized exchange modeling.</p>
+      </div>
+      <div class="info-card">
+        <i class="fas fa-chart-pie"></i>
+        <h3>risk & portfolio</h3>
+        <p>Multi‑factor models, stress testing, counterparty risk, extreme value theory, and real‑time risk engines.</p>
+      </div>
+      <div class="info-card">
+        <i class="fas fa-magnifying-glass-chart"></i>
+        <h3>financial AI</h3>
+        <p>LLMs for sentiment, fraud detection, time‑series forecasting (Transformers), explainable AI for regulators.</p>
+      </div>
+    </div>
+
+    <!-- leadership team (finance) -->
+    <div class="leaders-section">
+      <div class="leaders-title">
+        <i class="fas fa-user-tie" style="color:#b886ff;"></i>
+        <span>finance research leads</span>
+      </div>
+      <div class="leader-cards">
+        <div class="leader">
+          <i class="fas fa-user-astronaut"></i>
+          <h4>Maya Vallois</h4>
+          <div class="role">co‑founder / head of fintech</div>
+        </div>
+        <div class="leader">
+          <i class="fas fa-user-graduate"></i>
+          <h4>Dr. Kenji Tanaka</h4>
+          <div class="role">lead quantitative analyst</div>
+        </div>
+        <div class="leader">
+          <i class="fas fa-user-secret"></i>
+          <h4>Elena Voss</h4>
+          <div class="role">DeFi research director</div>
+        </div>
+        <div class="leader">
+          <i class="fas fa-user-ninja"></i>
+          <h4>Marcus Reed</h4>
+          <div class="role">high‑frequency trading</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORM for new finance researcher (join organization) -->
+    <div class="form-block" id="join-finance">
+      <h2><i class="fas fa-file-invoice"></i> researcher application · finance</h2>
+      <p style="color: #bfafff; margin-bottom: 2rem;">Become a part of FOCI's financial research unit — we're looking for quantitative minds, blockchain engineers, and financial AI specialists.</p>
+
+      <form id="financeForm" onsubmit="event.preventDefault(); alert('✅ Application received! The finance team will contact you within 48 hours.');">
+        <div class="form-grid-duo">
+          <div class="input-field">
+            <label><i class="fas fa-user"></i> full name *</label>
+            <input type="text" placeholder="e.g. Jordan Rivers" required>
+          </div>
+          <div class="input-field">
+            <label><i class="fas fa-envelope"></i> email *</label>
+            <input type="email" placeholder="jordan.r@example.com" required>
+          </div>
+          <div class="input-field">
+            <label><i class="fas fa-graduation-cap"></i> highest degree / field</label>
+            <input type="text" placeholder="e.g. M.Sc. Financial Mathematics">
+          </div>
+          <div class="input-field">
+            <label><i class="fas fa-briefcase"></i> years of quantitative experience</label>
+            <select>
+              <option>0-1 (student/enthusiast)</option>
+              <option>1-3 years</option>
+              <option>3-6 years</option>
+              <option>6-10 years</option>
+              <option>10+ years</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- finance-specific interests (checkboxes) -->
+        <label style="font-weight:600; color:#d0b0ff; display: block; margin-bottom: 0.5rem;">primary research interests (select all that apply)</label>
+        <div class="finance-interest">
+          <label class="interest-option"><input type="checkbox" name="interest" value="algo"> algorithmic trading</label>
+          <label class="interest-option"><input type="checkbox" name="interest" value="defi"> blockchain / DeFi</label>
+          <label class="interest-option"><input type="checkbox" name="interest" value="risk"> risk modeling</label>
+          <label class="interest-option"><input type="checkbox" name="interest" value="aiml"> financial AI/ML</label>
+          <label class="interest-option"><input type="checkbox" name="interest" value="quant"> quantitative development</label>
+          <label class="interest-option"><input type="checkbox" name="interest" value="market"> market microstructure</label>
+        </div>
+
+        <div class="input-field">
+          <label><i class="fas fa-pen"></i> tell us about your quantitative / research experience</label>
+          <textarea placeholder="Include any projects, publications, GitHub repos, trading strategies, or ideas..."></textarea>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:15px; margin:25px 0;">
+          <input type="checkbox" id="agreeFinance" style="width:20px; height:20px; accent-color:#b886ff;" checked>
+          <label for="agreeFinance">I'm excited to contribute to FOCI's finance R&D and accept the researcher guidelines.</label>
+        </div>
+
+        <button type="submit" class="btn-apply">
+          <i class="fas fa-paper-plane"></i> submit finance application
+        </button>
+        <p style="margin-top:1.5rem; color:#9b8bbf; text-align:center;"><i class="fas fa-shield-alt"></i> all data encrypted · we typically reply within 48h</p>
+      </form>
+    </div>
+
+    <!-- mini market ticker (just for vibe) -->
+    <div class="ticker">
+      <span class="ticker-item"><i class="fas fa-arrow-trend-up" style="color:#4caf50;"></i> BTC $67,420</span>
+      <span class="ticker-item"><i class="fas fa-arrow-trend-down" style="color:#ff6b6b;"></i> ETH $3,215</span>
+      <span class="ticker-item"><i class="fas fa-chart-simple"></i> S&P 5,442</span>
+      <span class="ticker-item"><i class="fas fa-coins"></i> DeFi TVL $84B</span>
+    </div>
+
+    <!-- footer -->
+    <div class="footer-note">
+      <p><i class="fas fa-coins" style="color: gold;"></i> FOCI FINANCIAL RESEARCH & DEVELOPMENT · part of FOCITECH · 2025</p>
+      <p>#quantitative #defi #algorithmic #fintech #joinFOCI</p>
+    </div>
+  </div>
+</body>
+</html>
